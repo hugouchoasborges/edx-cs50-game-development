@@ -8,7 +8,7 @@ using util;
 
 namespace props
 {
-    public class PropController : MonoBehaviour
+    public class PropManager : MonoBehaviour
     {
         private const int PROP_MAX_COUNT = 10;
         private const int PROP_MAX_ANGLE = 30;
@@ -16,17 +16,17 @@ namespace props
 
         private Pool<Prop> _propsBig;
         private Pool<Prop> _propsSmall;
-        private Pool<PropExplosion> _propsExplosion;
-        private Pool<PropExplosion> _propsExplosionSmall;
+        private Pool<ExplosionParticles> _propsExplosion;
+        private Pool<ExplosionParticles> _propsExplosionSmall;
         private Pool<Collectable> _collectables;
 
         private void Awake()
         {
             _propsBig = new Pool<Prop>(PROP_MAX_COUNT, Constants.PREFAB_PROP);
-            _propsExplosion = new Pool<PropExplosion>(PROP_MAX_COUNT, Constants.PREFAB_PROP_EXPLOSION);
+            _propsExplosion = new Pool<ExplosionParticles>(PROP_MAX_COUNT, Constants.PREFAB_PROP_EXPLOSION);
 
             _propsSmall = new Pool<Prop>(PROP_MAX_COUNT * 2, Constants.PREFAB_PROP_SMALL);
-            _propsExplosionSmall = new Pool<PropExplosion>(PROP_MAX_COUNT * 2, Constants.PREFAB_PROP_EXPLOSION_SMALL);
+            _propsExplosionSmall = new Pool<ExplosionParticles>(PROP_MAX_COUNT * 2, Constants.PREFAB_PROP_EXPLOSION_SMALL);
 
             _collectables = new Pool<Collectable>(PROP_MAX_COUNT * 8, Constants.PREFAB_COLLECTABLE);
         }

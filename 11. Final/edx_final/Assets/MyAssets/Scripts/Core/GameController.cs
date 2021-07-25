@@ -13,7 +13,7 @@ namespace core
         [SerializeField] private UnityEngine.UI.CanvasScaler _canvasScaler;
         [SerializeField] private PlayerController _player;
         [SerializeField] private BackgroundController _background;
-        [SerializeField] private PropController _propManager;
+        [SerializeField] private PropManager _propManager;
         [SerializeField] private EnemyManager _enemyManager;
 
         private void Awake()

@@ -4,15 +4,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace props
+namespace util
 {
-    public class PropExplosion : MonoBehaviour,IPoolable
+    public class ExplosionParticles : MonoBehaviour,IPoolable
     {
         [SerializeField] private ParticleSystem _explosionParticles;
 
-        private Action<PropExplosion> _onDestroy;
+        private Action<ExplosionParticles> _onDestroy;
 
-        public void Play(Vector2 position, Action<PropExplosion> onDestroy)
+        public void Play(Vector2 position, Action<ExplosionParticles> onDestroy)
         {
             transform.position = position;
             _onDestroy = onDestroy;

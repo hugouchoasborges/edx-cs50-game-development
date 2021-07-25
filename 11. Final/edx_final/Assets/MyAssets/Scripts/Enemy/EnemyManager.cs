@@ -11,14 +11,20 @@ namespace enemy
         [SerializeField] private GameObject _prefab;
         [SerializeField] private Transform[] _spawnPoints;
 
+
+        private const int ENEMIES_POOL_SIZE = 10;
         private Pool<EnemyController> _enemies;
+        private Pool<ExplosionParticles> _enemyExplosion;
 
         private void Awake()
         {
             if (_prefab != null)
-                _enemies = new Pool<EnemyController>(10, _prefab);
+                _enemies = new Pool<EnemyController>(ENEMIES_POOL_SIZE, _prefab);
             else
-                _enemies = new Pool<EnemyController>(10, Constants.PREFAB_ENEMY);
+                _enemies = new Pool<EnemyController>(ENEMIES_POOL_SIZE, Constants.PREFAB_ENEMY);
+
+            // Initiate its explosion particles
+            _enemyExplosion = new Pool<ExplosionParticles>(ENEMIES_POOL_SIZE, Constants.PREFAB_ENEMY_EXPLOSION);
         }
 
 
@@ -29,10 +35,19 @@ namespace enemy
             for (int i = 0; i < 1; i++)
             {
                 EnemyController enemy = _enemies.Instantiate(transform);
+                enemy.onDestroy += OnEnemyDestroyed;
                 //enemy.transform.position = _spawnPoints[i].position;
                 enemy.transform.position = new Vector2(0, 1);
                 enemy.Init();
             }
+        }
+
+        private void OnEnemyDestroyed(EnemyController enemy)
+        {
+            _enemyExplosion.Instantiate(transform)?.Play(enemy.transform.position, (obj) => _enemyExplosion.Destroy(obj));
+
+            enemy.onDestroy -= OnEnemyDestroyed;
+            _enemies.Destroy(enemy);
         }
     }
 }

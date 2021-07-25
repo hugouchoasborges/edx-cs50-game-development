@@ -24,6 +24,7 @@ namespace util
         public static string PREFAB_PROP_EXPLOSION_SMALL = "Prefabs/PropExplosionSmall";
 
         public static string PREFAB_ENEMY = "Prefabs/Enemy";
+        public static string PREFAB_ENEMY_EXPLOSION = "Prefabs/EnemyExplosion";
 
     }
 }
