@@ -9,6 +9,7 @@ namespace enemy
     public class EnemyManager : MonoBehaviour
     {
         [SerializeField] private GameObject _prefab;
+        [SerializeField] private Transform[] _spawnPoints;
 
         private Pool<EnemyController> _enemies;
 
@@ -23,11 +24,15 @@ namespace enemy
 
         // ========================== Spawn ============================
 
-        public void SpawnEnemy()
+        public void SpawnEnemies()
         {
-            EnemyController enemy = _enemies.Instantiate(transform);
-            enemy.transform.position = Vector2.one;
-            enemy.Init();
+            for (int i = 0; i < 1; i++)
+            {
+                EnemyController enemy = _enemies.Instantiate(transform);
+                //enemy.transform.position = _spawnPoints[i].position;
+                enemy.transform.position = new Vector2(0, 1);
+                enemy.Init();
+            }
         }
     }
 }

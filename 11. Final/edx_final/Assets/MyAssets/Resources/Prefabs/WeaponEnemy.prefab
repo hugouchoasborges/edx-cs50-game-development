@@ -73,5 +73,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6731672899220324554, guid: 5142f8adc9bd3e6498a5176a8ca6c3d0,
         type: 3}
+    - target: {fileID: 8948495449874030308, guid: 318f3fc66d7de494eb147f5eb3baec84,
+        type: 3}
+      propertyPath: _fireRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948495449874030308, guid: 318f3fc66d7de494eb147f5eb3baec84,
+        type: 3}
+      propertyPath: _bulletSpeed
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 318f3fc66d7de494eb147f5eb3baec84, type: 3}

@@ -3,7 +3,7 @@
 namespace behaviors
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    class MovementBehavior : MonoBehaviour
+    public class MovementBehavior : MonoBehaviour
     {
         // ========================== Components ============================
 
@@ -29,6 +29,11 @@ namespace behaviors
             {
                 _rigidbody2D.velocity = Vector2.zero;
             }
+        }
+
+        public void Stop()
+        {
+            _rigidbody2D.velocity = Vector2.zero;
         }
     }
 }

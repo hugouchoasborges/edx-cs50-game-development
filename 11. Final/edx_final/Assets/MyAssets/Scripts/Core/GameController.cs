@@ -40,7 +40,7 @@ namespace core
             _propManager.SpawnPropsLoop(5);
 
             // Start spawning enemies
-            _enemyManager.SpawnEnemy();
+            _enemyManager.SpawnEnemies();
         }
     }
 }

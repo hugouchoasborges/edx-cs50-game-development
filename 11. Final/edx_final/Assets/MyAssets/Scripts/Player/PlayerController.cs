@@ -6,49 +6,16 @@ using util;
 namespace player
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : SpaceshipController
     {
-        
-        [Header("Components")]
-        [SerializeField] private SpriteRenderer _spriteRenderer;
-
-        [Header("Input & Behaviors")]
-        [SerializeField] private PlayerInput _playerInput;
-        [SerializeField] private MovementBehavior _playerMovement;
-        [SerializeField] private ShootingManager _playerShootingManager;
         [SerializeField] private ScreenBoundariesBehavior _screenBoundariesBehavior;
 
-
-        // ========================== Components ============================
-
-        private Camera _camera;
-
-        private void Awake()
-        {
-            _camera = Camera.main;
-        }
-
         // ========================== Init ============================
-
-
-        private void OnEnable()
-        {
-            _playerInput.OnMove += _playerMovement.Move;
-            _playerInput.OnFirePressed += _playerShootingManager.Fire;
-            _playerInput.OnFireHeld += _playerShootingManager.ChargeFire;
-        }
-
-        private void OnDisable()
-        {
-            _playerInput.OnMove -= _playerMovement.Move;
-            _playerInput.OnFirePressed -= _playerShootingManager.Fire;
-            _playerInput.OnFireHeld -= _playerShootingManager.ChargeFire;
-        }
 
         public void Init()
         {
             // Screen bounds
-            Vector3 playerSize = _spriteRenderer.bounds.size;
+            Vector3 playerSize = mSpriteRenderer.bounds.size;
 
             _screenBoundariesBehavior.SetBorders(
                 new Rect(
@@ -61,12 +28,12 @@ namespace player
                 );
 
             // Player Input
-            _playerInput.EnableInput(true);
+            mInput.EnableInput(true);
 
             // Default weapon
-            _playerShootingManager.InstallWeapon(ShootingManager.WeaponPosition.LEFT);
-            //_playerShootingManager.InstallWeapon(ShootingManager.WeaponPosition.CENTER);
-            _playerShootingManager.InstallWeapon(ShootingManager.WeaponPosition.RIGHT);
+            mShooting.InstallWeapon(ShootingManager.WeaponPosition.LEFT);
+            //mShooting.InstallWeapon(ShootingManager.WeaponPosition.CENTER);
+            mShooting.InstallWeapon(ShootingManager.WeaponPosition.RIGHT);
         }
     }
 }

@@ -76,7 +76,6 @@ GameObject:
   - component: {fileID: 8426470698114747639}
   - component: {fileID: 8426470698114747528}
   - component: {fileID: 8426470698114747638}
-  - component: {fileID: 4866615338295413129}
   m_Layer: 13
   m_Name: Enemy
   m_TagString: Untagged
@@ -115,6 +114,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -215,10 +215,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05290051acb1695459432d036b2fd5b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 8426470698114747532}
-  _enemyInput: {fileID: 8426470698114747528}
-  _enemyMovement: {fileID: 8426470698114747639}
-  _enemyShootingManager: {fileID: 8426470698114747638}
+  mSpriteRenderer: {fileID: 8426470698114747532}
+  mInput: {fileID: 8426470698114747528}
+  mMovement: {fileID: 8426470698114747639}
+  mShooting: {fileID: 8426470698114747638}
 --- !u!114 &8426470698114747639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13934498ac899b04587e3c143c0a1baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _speed: 1.5
   _deadZone: 0.3
 --- !u!114 &8426470698114747528
 MonoBehaviour:
@@ -266,15 +266,3 @@ MonoBehaviour:
     position: {fileID: 0}
   _weaponRight:
     position: {fileID: 8426470696998142268}
---- !u!114 &4866615338295413129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8426470698114747637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 936e887e36a0ddc498b1547a4aef69b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

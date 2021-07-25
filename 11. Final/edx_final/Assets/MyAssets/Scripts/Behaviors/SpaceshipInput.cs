@@ -7,13 +7,19 @@ namespace behaviors
     {
         // ========================== Callbacks logic ============================
 
-        public event Action<Vector2> OnMove = delegate { };
-        public event Action OnFirePressed = delegate { };
-        public event Action OnFireHeld = delegate { };
+        public event Action<Vector2> OnMoveDelegate = delegate { };
+        public event Action OnStopDelegate = delegate { };
+        public event Action OnFirePressedDelegate = delegate { };
+        public event Action OnFireHeldDelegate = delegate { };
+
+        public void OnStop() => OnStopDelegate();
+        public void OnMove(Vector2 input) => OnMoveDelegate(input);
+        public void OnFirePressed() => OnFirePressedDelegate();
+        public void OnFireHeld() => OnFireHeldDelegate();
 
         // ========================== Input Logic ============================
 
-        [SerializeField] private bool _inputEnabled = false;
+        [SerializeField] protected bool _inputEnabled = false;
 
         private const string HoriInputName = "Horizontal";
         private const string VertInputName = "Vertical";
@@ -24,24 +30,17 @@ namespace behaviors
 
         public void EnableInput(bool value) => _inputEnabled = value;
 
-        private void HandleInput()
+        protected void HandleInput()
         {
             // Movement
             _axisInput = new Vector2(Input.GetAxis(HoriInputName), Input.GetAxis(VertInputName));
-            OnMove(_axisInput);
+            OnMoveDelegate(_axisInput);
 
             // Shooting
             if (Input.GetButtonDown(ShootInputName))
-                OnFirePressed();
+                OnFirePressedDelegate();
             else if (Input.GetButton(ShootInputName))
-                OnFireHeld();
-        }
-
-        // ========================== Unity Update ============================
-
-        private void Update()
-        {
-            if (_inputEnabled) HandleInput();
+                OnFireHeldDelegate();
         }
     }
 }
