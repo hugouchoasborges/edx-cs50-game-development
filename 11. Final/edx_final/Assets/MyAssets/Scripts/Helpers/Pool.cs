@@ -15,6 +15,8 @@ namespace helpers
 
         private static Transform _defaultPoolParent;
 
+        public int InstancesCount => _size - _queue.Count;
+
         // ========================== Init ============================
 
         public Pool(int size, string path, Transform parent = null)

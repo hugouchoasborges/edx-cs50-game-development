@@ -32,15 +32,32 @@ namespace enemy
 
         public void SpawnEnemies()
         {
-            for (int i = 0; i < 1; i++)
+            StartCoroutine(Coroutine_SpawnEnemies());
+        }
+
+        private void SpawnEnemy()
+        {
+            if (_enemies.InstancesCount > 0)
+                return;
+
+            EnemyController enemy = _enemies.Instantiate(transform);
+            enemy.onDestroy += OnEnemyDestroyed;
+            enemy.transform.position = _spawnPoints[Random.Range(0, _spawnPoints.Length)].position;
+            enemy.Init();
+        }
+
+        private WaitForSeconds _spawnEnemiesDelay = new WaitForSeconds(2f);
+        private IEnumerator Coroutine_SpawnEnemies()
+        {
+            while (true)
             {
-                EnemyController enemy = _enemies.Instantiate(transform);
-                enemy.onDestroy += OnEnemyDestroyed;
-                //enemy.transform.position = _spawnPoints[i].position;
-                enemy.transform.position = new Vector2(0, 1);
-                enemy.Init();
+                SpawnEnemy();
+                yield return _spawnEnemiesDelay;
             }
         }
+
+
+        // ========================== Destroy ============================
 
         private void OnEnemyDestroyed(EnemyController enemy)
         {
