@@ -12,6 +12,12 @@ namespace util
 
         private Action<ExplosionParticles> _onDestroy;
 
+        private void Awake()
+        {
+            ParticleSystem.MainModule main = _explosionParticles.main;
+            main.stopAction = ParticleSystemStopAction.Callback;
+        }
+
         public void Play(Vector2 position, Action<ExplosionParticles> onDestroy)
         {
             transform.position = position;
