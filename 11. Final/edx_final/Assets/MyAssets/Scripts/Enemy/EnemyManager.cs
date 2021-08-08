@@ -61,7 +61,7 @@ namespace enemy
 
         private void OnEnemyDestroyed(EnemyController enemy)
         {
-            _enemyExplosion.Instantiate(transform)?.Play(enemy.transform.position, (obj) => _enemyExplosion.Destroy(obj));
+            _enemyExplosion.Instantiate(transform)?.Play(enemy.BodyPosition, (obj) => _enemyExplosion.Destroy(obj));
 
             enemy.onDestroy -= OnEnemyDestroyed;
             _enemies.Destroy(enemy);

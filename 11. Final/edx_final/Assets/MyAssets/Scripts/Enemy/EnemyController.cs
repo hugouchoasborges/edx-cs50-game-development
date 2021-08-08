@@ -17,6 +17,8 @@ namespace enemy
         [SerializeField] private GameObject _colliderHolder;
         private Action _onCollisionEnter2D;
 
+        public Vector2 BodyPosition => mSpriteRenderer.transform.position;
+
         // ========================== Init ============================
 
         public void Init()
