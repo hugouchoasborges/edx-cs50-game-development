@@ -44,7 +44,8 @@ namespace behaviors.shooting
 
         private void FireBullet(Bullet bullet)
         {
-            bullet.transform.SetParent(transform, false);
+            bullet.transform.SetParent(null, false);
+            bullet.transform.SetPositionAndRotation(transform.position, transform.rotation);
             bullet.Fire(_bulletSpeed, DestroyBullet);
         }
 
