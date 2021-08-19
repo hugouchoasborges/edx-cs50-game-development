@@ -59,7 +59,7 @@ namespace helpers
             string poolName = $"{typeof(T).Name}_Pool";
 
             GameObject obj = GameObject.Find(poolName);
-            if(obj == null)
+            if (obj == null)
             {
                 obj = new GameObject(poolName);
                 obj.SetActive(false);
@@ -74,18 +74,14 @@ namespace helpers
 
         public T Instantiate(Transform parent = null)
         {
-            if (_queue.Count > 0)
-            {
-                T t = _queue.Dequeue();
+            T t = _queue.Count > 0
+                ? _queue.Dequeue()
+                : GameObject.Instantiate<GameObject>(_prefab, _parent).GetComponent<T>();
 
-                if (parent != null) t.gameObject.transform.SetParent(parent, false);
-                //t.gameObject.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
-                t.gameObject.transform.position = Vector3.zero;
+            if (parent != null) t.gameObject.transform.SetParent(parent, false);
+            t.gameObject.transform.position = Vector3.zero;
 
-                return t;
-            }
-
-            return null;
+            return t;
         }
 
         public void Destroy(T t)

@@ -47,7 +47,6 @@ namespace enemy
 
         public void Animator_Shoot()
         {
-            Debug.Log("Shoot");
             mShooting.Fire();
         }
     }

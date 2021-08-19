@@ -38,9 +38,6 @@ namespace core
 
             // Start spawning props
             _propManager.SpawnPropsLoop(5);
-
-            // Start spawning enemies
-            _enemyManager.SpawnEnemies();
         }
     }
 }
