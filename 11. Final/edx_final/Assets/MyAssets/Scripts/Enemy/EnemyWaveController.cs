@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace enemy
 {
-    class EnemyWaveController : MonoBehaviour
+    public class EnemyWaveController : MonoBehaviour
     {
-
 
         // ========================== Components ============================
 
@@ -33,12 +26,7 @@ namespace enemy
         private int _waveIdx = -1;
         private int _hordeIdx = -1;
 
-        private void Start()
-        {
-            StartFirstWave();
-        }
-
-        private void StartFirstWave()
+        public void StartFirstWave()
         {
             _waveIdx = -1;
             _hordeIdx = -1;
@@ -68,7 +56,6 @@ namespace enemy
 
         private void OnHordeCleared()
         {
-            Debug.Log("Horde Cleared");
             StartNextHorde();
         }
 
@@ -82,9 +69,6 @@ namespace enemy
 
         private void OnLastWaveCleared()
         {
-            Debug.Log("Last Wave Finished");
-
-            Debug.Log("Restarting to the first wave");
             StartFirstWave();
         }
     }

@@ -1,5 +1,6 @@
 ﻿using behaviors;
 using behaviors.shooting;
+using collectables;
 using UnityEngine;
 using util;
 
@@ -35,5 +36,28 @@ namespace player
             //mShooting.InstallWeapon(ShootingManager.WeaponPosition.CENTER);
             mShooting.InstallWeapon(ShootingManager.WeaponPosition.RIGHT);
         }
+
+
+        // ========================== Stats ============================
+
+        [Header("Statistics")]
+        [SerializeField] private int _collectables = 0;
+
+        // ========================== Collision ============================
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if(collision.gameObject.GetComponent<Collectable>() != null)
+            {
+                OnCollectableCollided();
+            }
+        }
+
+        private void OnCollectableCollided()
+        {
+            // Collect it
+            _collectables++;
+        }
+
     }
 }

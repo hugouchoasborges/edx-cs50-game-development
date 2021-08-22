@@ -26,5 +26,7 @@ namespace util
         public static string PREFAB_ENEMY = "Prefabs/Enemy";
         public static string PREFAB_ENEMY_EXPLOSION = "Prefabs/EnemyExplosion";
 
+        public static string PREFAB_PLAYER = "Prefabs/Player";
+
     }
 }
