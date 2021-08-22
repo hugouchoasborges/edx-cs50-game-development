@@ -15,6 +15,9 @@ namespace core
         {
             typeof(FSMPrepareMainMenuState),
             typeof(FSMMainMenuState),
+
+            typeof(FSMPauseMenuState),
+
             typeof(FSMPreparePlayingState),
             typeof(FSMPlayingState),
         };

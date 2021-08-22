@@ -26,7 +26,7 @@ namespace enemy
         private Dictionary<string, List<EnemyController>> _hordeEnemiesDict = new Dictionary<string, List<EnemyController>>();
         public Action onHordeCleared;
 
-        private void Awake()
+        private void Start()
         {
             if (_prefab != null)
                 _enemies = new Pool<EnemyController>(ENEMIES_POOL_SIZE, _prefab);

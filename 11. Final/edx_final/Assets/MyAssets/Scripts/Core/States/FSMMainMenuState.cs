@@ -7,18 +7,17 @@ namespace core.fsm.states
     {
         public override void OnStateEnter()
         {
+            // Show Main Menu
+            ApplicationController.Instance.MenuController.ShowMainMenu();
+
             // Start animating the Background
-            GameController.Instance.Background.Init();
-        }
-
-        public override void OnStateUpdate()
-        {
-
+            ApplicationController.Instance.Background.Init();
         }
 
         public override void OnStateExit()
         {
-            GameController.Instance.MenuController.HideMainMenu();
+            // Hide Main Menu
+            ApplicationController.Instance.MenuController.HideMainMenu();
         }
 
         public override void ReceiveEvent(FSMStateEvent stateEvent)
@@ -26,26 +25,15 @@ namespace core.fsm.states
             switch (stateEvent)
             {
                 case FSMStateEvent.MENU_PLAY_TRIGGERED:
-                    GameController.Instance.fsm.GoToState(FSMStateType.FSMPreparePlayingState);
+                    ApplicationController.Instance.fsm.GoToState(FSMStateType.FSMPreparePlayingState);
                     break;
 
                 case FSMStateEvent.MENU_EXIT_TRIGGERED:
-                    ExitGame();
+                    ApplicationController.Instance.ExitGame();
                     break;
                 default:
                     break;
             }
-        }
-
-        private void ExitGame()
-        {
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#elif (UNITY_WEBGL)
-            Application.OpenURL("about:blank");
-#else
-            Application.Quit();
-#endif
         }
     }
 }

@@ -6,6 +6,7 @@ namespace menu
     public class MenuController: MonoBehaviour
     {
         [SerializeField] private GameObject _panelMainMenu;
+        [SerializeField] private GameObject _panelPauseMenu;
 
 
         // ========================== UI Stuff ============================
@@ -20,16 +21,31 @@ namespace menu
             _panelMainMenu.SetActive(false);
         }
 
+        public void ShowPauseMenu()
+        {
+            _panelPauseMenu.SetActive(true);
+        }
+
+        public void HidePauseMenu()
+        {
+            _panelPauseMenu.SetActive(false);
+        }
+
         // ========================== Buttons ============================
 
         public void Play()
         {
-            GameController.Instance.fsm.DispatchEvent(core.states.FSMStateEvent.MENU_PLAY_TRIGGERED);
+            ApplicationController.Instance.fsm.DispatchEvent(core.states.FSMStateEvent.MENU_PLAY_TRIGGERED);
+        }
+
+        public void Resume()
+        {
+            ApplicationController.Instance.fsm.DispatchEvent(core.states.FSMStateEvent.MENU_RESUME_TRIGGERED);
         }
 
         public void Exit()
         {
-            GameController.Instance.fsm.DispatchEvent(core.states.FSMStateEvent.MENU_EXIT_TRIGGERED);
+            ApplicationController.Instance.fsm.DispatchEvent(core.states.FSMStateEvent.MENU_EXIT_TRIGGERED);
         }
     }
 }

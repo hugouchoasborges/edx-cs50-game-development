@@ -9,6 +9,11 @@ namespace util
         public static Camera Camera;
 
 
+        // ========================== Scenes ============================
+
+        public static int SCENE_START_IDX = 0;
+        public static int SCENE_GAME_IDX = 1;
+
         // ========================== Prefabs ============================
         public static string PREFAB_BULLET = "Prefabs/Bullet";
         public static string PREFAB_PLAYER_BULLET = "Prefabs/BulletPlayer";

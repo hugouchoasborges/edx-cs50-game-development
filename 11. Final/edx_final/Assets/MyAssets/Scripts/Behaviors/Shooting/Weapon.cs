@@ -14,7 +14,7 @@ namespace behaviors.shooting
 
         private Pool<Bullet> _bullets;
 
-        private void Awake()
+        private void Start()
         {
             if (_bulletPrefab != null)
                 _bullets = new Pool<Bullet>(10, _bulletPrefab);

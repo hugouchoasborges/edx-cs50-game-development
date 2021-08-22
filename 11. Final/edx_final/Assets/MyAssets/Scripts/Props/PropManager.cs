@@ -20,7 +20,7 @@ namespace props
         private Pool<ExplosionParticles> _propsExplosionSmall;
         private Pool<Collectable> _collectables;
 
-        private void Awake()
+        private void Start()
         {
             _propsBig = new Pool<Prop>(PROP_MAX_COUNT, Constants.PREFAB_PROP);
             _propsExplosion = new Pool<ExplosionParticles>(PROP_MAX_COUNT, Constants.PREFAB_PROP_EXPLOSION);

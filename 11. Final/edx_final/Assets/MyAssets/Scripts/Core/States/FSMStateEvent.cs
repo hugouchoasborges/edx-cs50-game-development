@@ -9,8 +9,11 @@ namespace core.states
     public enum FSMStateEvent
     {
         MENU_PLAY_TRIGGERED,
+        MENU_RESUME_TRIGGERED,
         MENU_EXIT_TRIGGERED,
 
         GAME_PAUSE_TRIGGERED,
+
+        GAME_ON_LOAD_COMPLETE,
     }
 }

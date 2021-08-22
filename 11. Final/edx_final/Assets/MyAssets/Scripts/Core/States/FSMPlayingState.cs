@@ -18,20 +18,10 @@ namespace core.fsm.states
 
         public override void OnStateUpdate()
         {
-            
-        }
-
-        public override void OnStateExit()
-        {
-            
-        }
-
-        public override void ReceiveEvent(FSMStateEvent stateEvent)
-        {
-            switch (stateEvent)
+            // Check Pause Input
+            if (Input.GetButtonDown("Pause"))
             {
-                default:
-                    break;
+                ApplicationController.Instance.fsm.GoToState(FSMStateType.FSMPauseMenuState);
             }
         }
     }

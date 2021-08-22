@@ -11,6 +11,8 @@ namespace core.states
         FSMPrepareMainMenuState,
         FSMMainMenuState,
 
+        FSMPauseMenuState,
+
         FSMPreparePlayingState,
         FSMPlayingState,
     }
