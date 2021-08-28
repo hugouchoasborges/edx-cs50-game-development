@@ -5,6 +5,7 @@ namespace menu
 {
     public class MenuController : MonoBehaviour
     {
+        [Header("Menus' Displaying")]
         [SerializeField] private GameObject _panelMainMenu;
         [SerializeField] private GameObject _panelMainMenuDefaultSelected;
 
@@ -13,6 +14,11 @@ namespace menu
 
         [SerializeField] private GameObject _panelGameOverMenu;
         [SerializeField] private GameObject _panelGameOverMenuDefaultSelected;
+
+        [SerializeField] private GameObject _panelHUDMenu;
+
+        [Header("HUD")]
+        [SerializeField] private CanvasGroup[] _livesCanvasGroup;
 
 
         // ========================== UI Stuff ============================
@@ -35,6 +41,11 @@ namespace menu
             ApplicationController.Instance.FocusController.SetFocusToObject(_panelGameOverMenuDefaultSelected);
         }
 
+        public void SetHUDMenuVisible(bool visible)
+        {
+            _panelHUDMenu.SetActive(visible);
+        }
+
         // ========================== Buttons ============================
 
         public void Play()
@@ -51,5 +62,17 @@ namespace menu
         {
             ApplicationController.Instance.fsm.DispatchEvent(core.states.FSMStateEvent.MENU_EXIT_TRIGGERED);
         }
+
+
+        // ========================== HUD ============================
+
+        public void SetTotalLives(int lives)
+        {
+            for (int i = 0; i < _livesCanvasGroup.Length; i++)
+            {
+                _livesCanvasGroup[i].alpha = lives > i ? 1 : 0;
+            }
+        }
+
     }
 }

@@ -7,7 +7,8 @@ namespace core.fsm.states
     {
         public override void OnStateEnter()
         {
-            GameController.Instance.player.Init();
+            // Show HUD
+            ApplicationController.Instance.MenuController.SetHUDMenuVisible(true);
 
             // Start spawning props
             GameController.Instance.PropManager.SpawnPropsLoop(5);
@@ -22,7 +23,13 @@ namespace core.fsm.states
             switch (stateEvent)
             {
                 case FSMStateEvent.PLAYER_ON_DEATH:
+                    GameController.Instance.OnPlayerDeath();
+                    break;
+                case FSMStateEvent.GAME_OVER:
                     ApplicationController.Instance.fsm.GoToState(FSMStateType.FSMGameOverMenuState);
+                    break;
+                case FSMStateEvent.RESPAWN_PLAYER:
+                    GameController.Instance.StartRespawnSequence();
                     break;
             }
         }
@@ -34,6 +41,14 @@ namespace core.fsm.states
             {
                 ApplicationController.Instance.fsm.GoToState(FSMStateType.FSMPauseMenuState);
             }
+        }
+
+        public override void OnStateExit()
+        {
+            base.OnStateExit();
+
+            // Hide HUD
+            ApplicationController.Instance.MenuController.SetHUDMenuVisible(true);
         }
     }
 }

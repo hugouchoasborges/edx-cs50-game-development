@@ -17,5 +17,7 @@ namespace core.states
         GAME_ON_LOAD_COMPLETE,
 
         PLAYER_ON_DEATH,
+        GAME_OVER,
+        RESPAWN_PLAYER,
     }
 }

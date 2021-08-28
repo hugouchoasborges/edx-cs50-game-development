@@ -22,7 +22,13 @@ namespace core.fsm.states
             // Set the new Scene as the default, so new instantiated objects can be placed at it by default
             SceneManager.SetActiveScene(SceneManager.GetSceneAt(Constants.SCENE_GAME_IDX));
 
-            GameController.Instance.player = (GameObject.Instantiate(Resources.Load(Constants.PREFAB_PLAYER)) as GameObject).GetComponent<PlayerController>();
+            StartGame();
+
+        }
+
+        private void StartGame()
+        {
+            GameController.Instance.StartGame();
             ApplicationController.Instance.fsm.GoToState(FSMStateType.FSMPlayingState);
         }
 
