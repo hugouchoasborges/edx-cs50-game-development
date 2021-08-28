@@ -95,9 +95,33 @@ namespace core
         }
 
 
+        // ========================== Enemies ============================
+
+        public void OnEnemyDestroyed()
+        {
+            Score++;
+        }
+
+
         // ========================== GameFlow ============================
+
+        //[Header("GameFlow")]
+        private int _score = 0;
+        public int Score
+        {
+            get => _score;
+            set
+            {
+                _score = value;
+                ApplicationController.Instance.MenuController.SetScore(_score);
+            }
+        }
+
+
         public void StartGame()
         {
+            Score = 0;
+
             InstantiatePlayer();
             _playerLives = PLAYER_MAX_LIVES;
             ApplicationController.Instance.MenuController.SetTotalLives(_playerLives);

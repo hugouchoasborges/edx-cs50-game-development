@@ -15,7 +15,6 @@ namespace enemy
 
         // Collision handling
         [SerializeField] private GameObject _colliderHolder;
-        private Action _onCollisionEnter2D;
 
         public Vector2 BodyPosition => mSpriteRenderer.transform.position;
 
@@ -33,12 +32,13 @@ namespace enemy
 
             // Add the collider listener to the child object with the Collider2D
             EnemyCollider collider = _colliderHolder.AddComponent<EnemyCollider>();
-            collider.onCollisionEnter2D = OnCollisionEnter2D;
+            collider.onCollisionEnter2D = MyOnCollisionEnter2D;
 
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void MyOnCollisionEnter2D(Collision2D collision)
         {
+            GameController.Instance.OnEnemyDestroyed();
             onDestroy(this);
         }
 

@@ -1,5 +1,6 @@
 ﻿using core;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace menu
 {
@@ -14,10 +15,13 @@ namespace menu
 
         [SerializeField] private GameObject _panelGameOverMenu;
         [SerializeField] private GameObject _panelGameOverMenuDefaultSelected;
+        [SerializeField] private GameObject _panelScoreMenu;
+        [SerializeField] private Text _textScoreMenu;
 
         [SerializeField] private GameObject _panelHUDMenu;
 
         [Header("HUD")]
+        [SerializeField] private Text _scoreText;
         [SerializeField] private CanvasGroup[] _livesCanvasGroup;
 
 
@@ -35,10 +39,13 @@ namespace menu
             ApplicationController.Instance.FocusController.SetFocusToObject(_panelPauseMenuDefaultSelected);
         }
 
-        public void SetGameOverMenuVisible(bool visible)
+        public void SetGameOverMenuVisible(bool visible, int? scoreValue = null)
         {
             _panelGameOverMenu.SetActive(visible);
             ApplicationController.Instance.FocusController.SetFocusToObject(_panelGameOverMenuDefaultSelected);
+
+            _panelScoreMenu.SetActive(visible && scoreValue.HasValue);
+            if (scoreValue.HasValue) _textScoreMenu.text = scoreValue.Value.ToString();
         }
 
         public void SetHUDMenuVisible(bool visible)
@@ -72,6 +79,11 @@ namespace menu
             {
                 _livesCanvasGroup[i].alpha = lives > i ? 1 : 0;
             }
+        }
+
+        public void SetScore(int score)
+        {
+            _scoreText.text = score.ToString();
         }
 
     }

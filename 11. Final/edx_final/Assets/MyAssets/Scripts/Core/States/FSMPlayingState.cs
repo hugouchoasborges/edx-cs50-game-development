@@ -48,7 +48,7 @@ namespace core.fsm.states
             base.OnStateExit();
 
             // Hide HUD
-            ApplicationController.Instance.MenuController.SetHUDMenuVisible(true);
+            ApplicationController.Instance.MenuController.SetHUDMenuVisible(false);
         }
     }
 }

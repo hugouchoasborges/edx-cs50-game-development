@@ -10,7 +10,7 @@ namespace core.fsm.states
         public override void OnStateEnter()
         {
             // Show Pause Menu
-            ApplicationController.Instance.MenuController.SetGameOverMenuVisible(true);
+            ApplicationController.Instance.MenuController.SetGameOverMenuVisible(true, GameController.Instance.Score);
 
             // Pause Game
             Time.timeScale = 0;
