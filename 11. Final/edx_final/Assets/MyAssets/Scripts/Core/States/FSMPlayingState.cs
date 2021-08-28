@@ -16,6 +16,17 @@ namespace core.fsm.states
             GameController.Instance.EnemyWaveController.StartFirstWave();
         }
 
+        public override void ReceiveEvent(FSMStateEvent stateEvent)
+        {
+            base.ReceiveEvent(stateEvent);
+            switch (stateEvent)
+            {
+                case FSMStateEvent.PLAYER_ON_DEATH:
+                    ApplicationController.Instance.fsm.GoToState(FSMStateType.FSMGameOverMenuState);
+                    break;
+            }
+        }
+
         public override void OnStateUpdate()
         {
             // Check Pause Input

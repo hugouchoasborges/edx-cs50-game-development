@@ -9,7 +9,7 @@ namespace behaviors
 
         protected Camera mCamera;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             mCamera = Camera.main;
         }

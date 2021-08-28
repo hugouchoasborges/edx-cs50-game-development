@@ -18,6 +18,8 @@ namespace core
 
             typeof(FSMPauseMenuState),
 
+            typeof(FSMGameOverMenuState),
+
             typeof(FSMPreparePlayingState),
             typeof(FSMPlayingState),
         };

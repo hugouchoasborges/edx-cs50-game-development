@@ -190,6 +190,12 @@ MonoBehaviour:
   mMovement: {fileID: 4214526575668730865}
   mShooting: {fileID: 4214526575668730866}
   _screenBoundariesBehavior: {fileID: 4214526575668730864}
+  _whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 9216
+  _whatIsCollectable:
+    serializedVersion: 2
+    m_Bits: 2048
   _collectables: 0
 --- !u!114 &4214526575668730869
 MonoBehaviour:

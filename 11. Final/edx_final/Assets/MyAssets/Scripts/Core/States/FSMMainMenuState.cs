@@ -8,7 +8,7 @@ namespace core.fsm.states
         public override void OnStateEnter()
         {
             // Show Main Menu
-            ApplicationController.Instance.MenuController.ShowMainMenu();
+            ApplicationController.Instance.MenuController.SetMainMenuVisible(true);
 
             // Start animating the Background
             ApplicationController.Instance.Background.Init();
@@ -17,7 +17,7 @@ namespace core.fsm.states
         public override void OnStateExit()
         {
             // Hide Main Menu
-            ApplicationController.Instance.MenuController.HideMainMenu();
+            ApplicationController.Instance.MenuController.SetMainMenuVisible(false);
         }
 
         public override void ReceiveEvent(FSMStateEvent stateEvent)

@@ -13,6 +13,8 @@ namespace core.states
 
         FSMPauseMenuState,
 
+        FSMGameOverMenuState,
+
         FSMPreparePlayingState,
         FSMPlayingState,
     }

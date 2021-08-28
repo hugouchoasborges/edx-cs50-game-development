@@ -30,6 +30,9 @@ namespace core
         [SerializeField] private MenuController _menuController;
         public MenuController MenuController => _menuController;
 
+        [SerializeField] private FocusController _focusController;
+        public FocusController FocusController => _focusController;
+
         public FSM fsm { get; private set; }
 
         private void Awake()
@@ -68,6 +71,11 @@ namespace core
 #else
             Application.Quit();
 #endif
+        }
+
+        public static bool LayerMaskContains(int layerMask, int layer)
+        {
+            return ((layerMask & (1 << layer)) != 0);
         }
     }
 }

@@ -3,32 +3,36 @@ using UnityEngine;
 
 namespace menu
 {
-    public class MenuController: MonoBehaviour
+    public class MenuController : MonoBehaviour
     {
         [SerializeField] private GameObject _panelMainMenu;
+        [SerializeField] private GameObject _panelMainMenuDefaultSelected;
+
         [SerializeField] private GameObject _panelPauseMenu;
+        [SerializeField] private GameObject _panelPauseMenuDefaultSelected;
+
+        [SerializeField] private GameObject _panelGameOverMenu;
+        [SerializeField] private GameObject _panelGameOverMenuDefaultSelected;
 
 
         // ========================== UI Stuff ============================
 
-        public void ShowMainMenu()
+        public void SetMainMenuVisible(bool visible)
         {
-            _panelMainMenu.SetActive(true);
+            _panelMainMenu.SetActive(visible);
+            ApplicationController.Instance.FocusController.SetFocusToObject(_panelMainMenuDefaultSelected);
         }
 
-        public void HideMainMenu()
+        public void SetPauseMenuVisible(bool visible)
         {
-            _panelMainMenu.SetActive(false);
+            _panelPauseMenu.SetActive(visible);
+            ApplicationController.Instance.FocusController.SetFocusToObject(_panelPauseMenuDefaultSelected);
         }
 
-        public void ShowPauseMenu()
+        public void SetGameOverMenuVisible(bool visible)
         {
-            _panelPauseMenu.SetActive(true);
-        }
-
-        public void HidePauseMenu()
-        {
-            _panelPauseMenu.SetActive(false);
+            _panelGameOverMenu.SetActive(visible);
+            ApplicationController.Instance.FocusController.SetFocusToObject(_panelGameOverMenuDefaultSelected);
         }
 
         // ========================== Buttons ============================

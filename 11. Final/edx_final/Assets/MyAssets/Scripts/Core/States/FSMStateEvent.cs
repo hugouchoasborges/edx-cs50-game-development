@@ -15,5 +15,7 @@ namespace core.states
         GAME_PAUSE_TRIGGERED,
 
         GAME_ON_LOAD_COMPLETE,
+
+        PLAYER_ON_DEATH,
     }
 }
